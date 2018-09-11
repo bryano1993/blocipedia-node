@@ -1,0 +1,11 @@
+{
+  "name": "blocipedia-node",
+  "version": "1.0.0",
+  "description": "an application that allows users to create, collaborate, and share wikis",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "export NODE_ENV=test && jasmine"
+  },
+  "author": "Bryan O'Connor",
+  "license": "ISC"
+}
