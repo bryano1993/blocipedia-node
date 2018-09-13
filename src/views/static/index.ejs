@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include ./partials/head.ejs %>
+    <!-- We can now add additional tags as needed by the individual templates -->
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <% include ./partials/navbar.ejs %>
+
+    <!-- Page Content -->
+    <main class="container">
+
+        <!-- Jumbotron Header -->
+
+        <h1 class="display-4 text-center">My Wikis</h1>
+        <header class="jumbotron my-4">
+            <div class="container">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Programming</td>
+                            <td>edit</td>
+                            <td>delete</td>
+                        </tr>
+                        <tr>
+                            <td>Sports</td>
+                            <td>edit</td>
+                            <td>delete</td>
+                        </tr>
+                        <tr>
+                            <td>Dogs</td>
+                            <td>edit</td>
+                            <td>delete</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </header>
+        <h2 class="text-center"><a href="#" class="text-center btn btn-primary btn-lg">New Wiki</a></h2>
+
+
+
+    </main>
+    <!-- /.container -->
+
+    <% include ./partials/baseScripts.ejs %>
+</body>
+
+</html>
