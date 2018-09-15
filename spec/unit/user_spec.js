@@ -3,6 +3,7 @@ const User = require("../../src/db/models").User;
 
 describe("User", () => {
   beforeEach(done => {
+    // Start each test with an empty table.
     sequelize
       .sync({ force: true })
       .then(() => {
@@ -15,14 +16,15 @@ describe("User", () => {
   });
 
   describe("#create()", () => {
-    it("should create a User object with a valid email and password", done => {
+    // Test to ensure the successful creation of a user with the right attribute values.
+    it("should create a User object with a valid username, email and password", done => {
       User.create({
-        name: "User",
+        username: "user_name",
         email: "user@example.com",
         password: "1234567890"
       })
         .then(user => {
-          expect(user.name).toBe("User");
+          expect(user.username).toBe("user_name");
           expect(user.email).toBe("user@example.com");
           expect(user.id).toBe(1);
           done();
@@ -35,8 +37,8 @@ describe("User", () => {
 
     it("should not create a user with invalid email or password", done => {
       User.create({
-        name: "User",
-        email: "It's-a me, Mario!",
+        username: "user_name",
+        email: "wrong_user@example.com",
         password: "1234567890"
       })
         .then(user => {
@@ -47,6 +49,7 @@ describe("User", () => {
           done();
         })
         .catch(err => {
+          // Confirm that we return a validation error
           expect(err.message).toContain(
             "Validation error: must be a valid email"
           );
@@ -55,14 +58,15 @@ describe("User", () => {
     });
 
     it("should not create a user with an email already taken", done => {
+      // Test a returned validation error when creating a user with a duplicate email
       User.create({
-        name: "User",
+        username: "user_name",
         email: "user@example.com",
         password: "1234567890"
       })
         .then(user => {
           User.create({
-            name: "User",
+            username: "user_name",
             email: "user@example.com",
             password: "nananananananananananananananana BATMAN!"
           })

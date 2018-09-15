@@ -1,6 +1,5 @@
 module.exports = {
   validateUsers(req, res, next) {
-    console.log(req.body);
     if (req.method === "POST") {
       req.checkBody("email", "must be valid").isEmail();
       req
@@ -12,6 +11,7 @@ module.exports = {
         .matches(req.body.password);
     }
     const errors = req.validationErrors();
+
     if (errors) {
       req.flash("error", errors);
       return res.redirect(req.headers.referer);

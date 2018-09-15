@@ -1,0 +1,48 @@
+rename data base
+ create data db in terminal
+ sequilize db migrate
+
+
+psql bloccit-dev postgres to run database
+
+SELECT * FROM "Users";
+
+UPDATE "Users" SET role = 'admin' WHERE id = 007;
+
+
+
+
+
+$ sequelize db:migrate
+$ sequelize db:migrate --env test
+
+updates our database
+
+
+sequelize model:create --name Banner --attributes source:string,description:string
+
+create new model
+
+
+sequelize db:seed:all
+
+seed data 
+
+pg_ctl -D C:/PostgreSQL/data/pg10 start
+
+start server
+
+
+
+
+
+
+
+
+calibrate data base
+
+ dropdb -U postgres-w <your db name>
+
+createdb
+
+sequelize db:migrate
