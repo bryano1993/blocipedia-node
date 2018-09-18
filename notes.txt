@@ -45,7 +45,13 @@ dropdb -U postgres-w <your db name>
 
 createdb -U postgres-w <your db name>
 
-sequelize db:migrate
+sequelize db:migrate (execute the migration, this will call up method)  
+
+    to revert sequelize db:migrate:undo         this will call down method
 
 
 
+UPDATE SCHEMA
+
+$ sequelize db:migrate:undo:all && sequelize db:migrate:undo:all --env test
+$ sequelize db:migrate && sequelize db:migrate --env test
