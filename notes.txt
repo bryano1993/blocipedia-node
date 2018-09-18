@@ -39,10 +39,13 @@ start server
 
 
 
-calibrate data base
+calibrate data base/refresh
 
- dropdb -U postgres-w <your db name>
+dropdb -U postgres-w <your db name>
 
-createdb
+createdb -U postgres-w <your db name>
 
 sequelize db:migrate
+
+
+
