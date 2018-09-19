@@ -8,9 +8,9 @@ describe("Wiki", () => {
     this.user;
     sequelize.sync({ force: true }).then(res => {
       User.create({
-        username: "khang",
-        email: "example@email.com",
-        password: "12345"
+        username: "Bryano",
+        email: "example@gmail.com",
+        password: "123456789"
       }).then(user => {
         this.user = user;
 
@@ -70,9 +70,9 @@ describe("Wiki", () => {
   describe("#setUser()", () => {
     it("should associate a user and a wiki together", done => {
       User.create({
-        username: "Khan",
-        email: "example@email.com",
-        password: "12345"
+        username: "Bryano",
+        email: "example@gmail.com",
+        password: "123456789"
       }).then(newUser => {
         expect(this.wiki.userId).toBe(this.user.id);
 
