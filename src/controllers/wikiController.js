@@ -1,6 +1,6 @@
 const wikiQueries = require("../db/queries.wikis.js");
 const Authorizer = require("../policies/wiki");
-
+const markdown = require("markdown").markdown;
 module.exports = {
   public(req, res, next) {
     wikiQueries.getAllWikis((err, wikis) => {
@@ -20,7 +20,6 @@ module.exports = {
       }
     });
   },
-
   new(req, res, next) {
     res.render("wikis/new");
   },
@@ -44,16 +43,25 @@ module.exports = {
 
   show(req, res, next) {
     wikiQueries.getWiki(req.params.id, (err, wiki) => {
+      let markdownWiki = {
+        title: markdown.toHTML(wiki.title),
+        body: markdown.toHTML(wiki.body),
+        private: wiki.private,
+        userId: wiki.userId,
+        id: wiki.id
+      };
+      console.log(markdownWiki);
       if (err || wiki == null) {
         res.redirect(404, "/");
       } else {
-        res.render("wikis/show", { wiki });
+        wiki.body = markdown.toHTML(wiki.body);
+        res.render("wikis/show", { markdownWiki });
       }
     });
   },
 
   destroy(req, res, next) {
-    wikiQueries.deleteWiki(req.params.id, (err, deletedRecordsCount) => {
+    wikiQueries.deleteWiki(req, (err, deletedRecordsCount) => {
       if (err) {
         res.redirect(500, `/wikis/${req.params.id}`);
       } else {
