@@ -19,6 +19,14 @@
             <li class="list-group-item">
                 <a href="/wikis/<%= wiki.id %>">
                     <%= wiki.title %> </a>
+                <% if(currentUser && (currentUser.id == wiki.userId || currentUser && currentUser.role === "admin")) { %>
+                <a href="/wikis/<%= wiki.id %>/edit" class="btn btn-warning">Edit</a>
+                <a href="/wikis/<%= wiki.id %>/collaborators" class="btn btn-info">Collaborators</a>
+
+                <form style="display:initial" action="/wikis/<%= wiki.id %>/destroy" method="post">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+                <% } %>
             </li>
             <% }) %>
         </ul>
