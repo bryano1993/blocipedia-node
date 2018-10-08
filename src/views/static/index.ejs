@@ -3,44 +3,38 @@
 
 <head>
   <% include ./partials/head.ejs %>
-  <!-- We can now add additional tags as needed by the individual templates -->
 </head>
 
 <body>
-
   <!-- Navigation -->
   <% include ./partials/navbar.ejs %>
-
   <!-- Page Content -->
   <main class="container">
-
     <!-- Jumbotron Header -->
-
     <header class="jumbotron my-4">
-      <h1 class="display-2 text-center">Welcome to Blocipedia</h1>
-      <p class="lead text-center">An application for users to create, collaborate and share wikis.</p>
+      <h1 class="display-3">Welcome to Blocipedia</h1>
+      <p class="lead">An application for users to create, collaborate and share wikis.</p>
       <% if (!currentUser) { %>
-      <h2 class="text-center"><a href="/users/sign_up" class="btn btn-primary btn-lg">Sign up</a></h2>
+      <a href="/users/sign_up" class="btn btn-primary btn-lg">Sign up</a>
       <% } %>
-    </header>
 
 
-    <section class="row text-center">
+      <section class="row text-center">
 
-      <section class="col-lg-4">
-        <h4 class="card-title">Create</h4>
-        <p class="card-text">Create something special</p>
-      </section>
+        <section class="col-lg-4">
+          <h4 class="card-title">Create</h4>
+          <p class="card-text">Create something special</p>
+        </section>
 
-      <section class="col-lg-4">
-        <h4 class="card-title">Collaborate</h4>
-        <p class="card-text">Work together on a wiki</p>
-      </section>
+        <section class="col-lg-4">
+          <h4 class="card-title">Collaborate</h4>
+          <p class="card-text">Work together on a wiki</p>
+        </section>
 
-      <section class="col-lg-4">
-        <h4 class="card-title">Share</h4>
-        <p class="card-text">Share wikis with others</p>
-      </section>
+        <section class="col-lg-4">
+          <h4 class="card-title">Share</h4>
+          <p class="card-text">Share wikis with others</p>
+        </section>
 
 
 
